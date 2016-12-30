@@ -13,5 +13,21 @@ done by extending the `buffer-manage` and using its functions and keybindings
 to manage multiple inferior shells.  To summarize, this includes:
 * A major mode for switching to, deleting and starting new shells.
 * Fast switching with customized key bindings through the customize framework.
+* Track and rename shells by name through the shell entry management mode.
 * Interact with buffer shell (entries) as objects with a straight forward
   API.
+
+
+## Usage
+
+Using the default bindings, use:
+* `M-x bshell` or `C-x C-h` to create a new shell
+* `C-tab` to enter the shell entry management mode.
+* `C-c r` to rename the shell.
+
+
+## License
+
+Copyright © 2017 Paul Landes
+
+GNU Lesser General Public License, Version 2.0
