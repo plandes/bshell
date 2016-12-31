@@ -2,12 +2,12 @@
 
 ;; Copyright (C) 2015 - 2017 Paul Landes
 
-;; Version: 0.0.1
+;; Version: 0.1
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: interactive shell management
 ;; URL: https://github.com/plandes/bshell
-;; Package-Requires: ((emacs "24") (cl-lib "0.5") (buffer-manage))
+;; Package-Requires: ((emacs "24") (cl-lib "0.5") (buffer-manage "0.1"))
 
 ;; This file is not part of GNU Emacs.
 

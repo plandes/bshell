@@ -8,3 +8,4 @@ extra
 /.cask
 /dist
 /elpa
+/doc
