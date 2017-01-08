@@ -1,4 +1,4 @@
-;;; bshell.el --- Interactive object oriented shell
+;;; bshell.el --- interactive object oriented shell
 
 ;; Copyright (C) 2015 - 2017 Paul Landes
 
@@ -7,7 +7,7 @@
 ;; Maintainer: Paul Landes
 ;; Keywords: interactive shell management
 ;; URL: https://github.com/plandes/bshell
-;; Package-Requires: ((emacs "24") (cl-lib "0.5") (buffer-manage "0.1"))
+;; Package-Requires: ((cl-lib "0.5") (buffer-manage "0.1"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -28,8 +28,8 @@
 
 ;;; Commentary:
 
-;;; Create multiple inferior shells using the `buffer-manager' library.  See
-;;; https://github.com/plandes/buffer-manage for more information.
+;; Create, delete, rename multiple inferior shells using the `buffer-manager'
+;; library.  See https://github.com/plandes/buffer-manage for more information.
 
 ;;; Code:
 
@@ -91,7 +91,7 @@
    `(("jump-directory"
       (defun ,(intern (format "%s-jump-directory"
 			      (buffer-manager-conical-name this)))
-	(bookmark)
+	  (bookmark)
 	"Jump to a bookmark in the current buffer."
 	(interactive (list (bookmark-completing-read "Jump to directory")))
 	(let* ((this ,singleton-variable-sym)
@@ -100,7 +100,7 @@
      ("switch-by-working-directory"
       (defun ,(intern (format "%s-switch-by-working-directory"
 			      (buffer-manager-conical-name this)))
-	(name)
+	  (name)
 	"Switch to an entry prompting by working directory."
 	(interactive
 	 (list (buffer-manage-read-working-directory ,singleton-variable-sym)))

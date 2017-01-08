@@ -1,7 +1,7 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;
-;; Unit tests of bshell
+;; Unit tests of bshell-test.el
 ;;
 ;;; Code:
 

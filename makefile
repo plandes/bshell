@@ -1,8 +1,7 @@
-APP_NAME ?=	$(shell grep package-file Cask | sed 's/.*lisp\/\(.*\)\.el.*/\1/')
+APP_NAME ?=	$(shell grep package-file Cask | sed 's/.*\"\(.*\)\.el.*/\1/')
 EMACS ?=	emacs
-EMACSFLAGS =	-L .
 CASK ?=		cask
-LISP_DIR=	lisp
+LISP_DIR=	.
 DOC_DIR=	doc
 ELPA_FILE=	elpa
 ELS=		$(wildcard $(LISP_DIR)/*.el)
@@ -15,6 +14,7 @@ all:		package
 .PHONY:		info
 info:
 		@echo "app name: $(APP_NAME)"
+		@echo "compile elisp: $(OBJECTS)"
 
 # patterns
 %.elc:		%.el
@@ -30,8 +30,8 @@ $(ELPA_FILE):
 build:		$(ELPA_FILE) $(OBJECTS)
 
 .PHONY:		test
-test:		$(ELPA_FILE) cleantest
-		$(CASK) exec ert-runner -L $(LISP_DIR) -L .
+test:		build cleantest
+		$(CASK) exec ert-runner -L $(LISP_DIR)
 
 $(DOC_DIR):
 		mkdir -p $(DOC_DIR)

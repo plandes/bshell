@@ -2,16 +2,14 @@
 (source gnu)
 (source melpa)
 
-(depends-on "noflet")
+(depends-on "buffer-manage"
+	     :git "https://github.com/plandes/buffer-manage"
+	     :files ("*.el"))
 
-(package-file "lisp/bshell.el")
+(package-file "bshell.el")
 
-(files "lisp/*.el" "doc/*.texi" (:exclude ".dir-locals.el"))
+(files "*.el" "doc/*.texi" (:exclude ".dir-locals.el"))
 
 (development
- (depends-on "buffer-manage"
-	     :git "https://github.com/plandes/buffer-manage"
-	     :files ("lisp/*.el"))
- (depends-on "ert-runner")
  (depends-on "dash")
- (depends-on "choice-program"))
+ (depends-on "ert-runner"))
