@@ -1,4 +1,6 @@
-# Manage multiple shells in Emacs buffers [![MELPA badge][melpa-badge]][melpa-link] [![Travis CI Build Status][travis-badge]][travis-link]
+# Manage multiple shells in Emacs buffers
+
+[![Travis CI Build Status][travis-badge]][travis-link]
 
   [melpa-link]: https://melpa.org/#/bshell
   [melpa-stable-link]: https://stable.melpa.org/#/bshell
@@ -21,10 +23,25 @@ keybindings to manage multiple inferior shells.  To summarize, this includes:
 
 ## Usage
 
-Using the default bindings, use:
-* `M-x bshell` or `C-x C-h` to create a new shell
-* `C-tab` to enter the shell entry management mode.
-* `C-c r` to rename the shell.
+In your `~/.emacs` start up file include:
+```lisp
+(require 'bshell)
+```
+
+### Key Bindings
+
+Use `C-tab` to enter the shell entry management mode (see
+[buffer-manage entries mode](https://github.com/plandes/buffer-manage#key-bindings)).
+While *in* a shell buffer the following key bindings apply:
+
+|Key               |Function                        |Description
+|-----------------:|--------------------------------|-----------------------------------------------------------
+|`<C-tab>`         |bshell-list                     |In this buffer, you can rename and go to shells.
+|`<C-M-tab>`       |bshell-new                      |Create a new shell entry.
+|`C-x C-h`         |bshell-switch                   |Switch to shell NAME, which is prompted from the user.
+|`C-c r`           |bshell-rename                   |Rename the buffer entry shells.
+|`C-c g`           |bshell-jump-directory           |Jump to a bookmark in the current buffer.
+|`C-x C-'`         |bshell-toggle-cycle-method      |Toggle cycle methods (i.e. last visited vs. next buffer).
 
 
 ## License
