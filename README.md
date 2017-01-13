@@ -1,6 +1,6 @@
 # Manage multiple shells in Emacs buffers
 
-[![Travis CI Build Status][travis-badge]][travis-link]
+[![MELPA badge][melpa-badge]][melpa-link] [![MELPA stable badge][melpa-stable-badge]][melpa-stable-link] [![Travis CI Build Status][travis-badge]][travis-link]
 
   [melpa-link]: https://melpa.org/#/bshell
   [melpa-stable-link]: https://stable.melpa.org/#/bshell
