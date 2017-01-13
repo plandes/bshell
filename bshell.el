@@ -7,7 +7,7 @@
 ;; Maintainer: Paul Landes
 ;; Keywords: interactive shell management
 ;; URL: https://github.com/plandes/bshell
-;; Package-Requires: ((cl-lib "0.5") (buffer-manage "0.1"))
+;; Package-Requires: ((emacs "25") (buffer-manage "0.1"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -50,7 +50,7 @@
 
 (defclass bshell-entry (buffer-entry) ())
 
-(defmethod buffer-entry-create-buffer ((this bshell-entry))
+(cl-defmethod buffer-entry-create-buffer ((this bshell-entry))
   (let ((process-environment (cl-copy-list process-environment)))
     ;; since mac login scripts build PATH and MANPATH from environment let the
     ;; this new shell rebuild these
@@ -59,7 +59,7 @@
       (setenv "MANPATH" ""))
     (shell)))
 
-(defmethod buffer-manage-entry-jump-directory ((this bshell-entry) bookmark)
+(cl-defmethod buffer-manage-entry-jump-directory ((this bshell-entry) bookmark)
   "Jump to directory to the directory given from BOOKMARK."
   (require 'bookmark)
   (bookmark-maybe-load-default-file)
@@ -71,16 +71,16 @@
 
 (defclass bshell-manager (buffer-manager) ())
 
-(defmethod buffer-manager-conical-name ((this bshell-manager)) "bshell")
+(cl-defmethod buffer-manager-conical-name ((this bshell-manager)) "bshell")
 
-(defmethod buffer-manager-name ((this bshell-manager)) "shell")
+(cl-defmethod buffer-manager-name ((this bshell-manager)) "shell")
 
-(defmethod buffer-manager-create-entry ((this bshell-manager) &rest args)
+(cl-defmethod buffer-manager-create-entry ((this bshell-manager) &rest args)
   (apply 'bshell-entry nil args))
 
-(defmethod buffer-manager-start-dir ((this bshell-manager)) default-directory)
+(cl-defmethod buffer-manager-start-dir ((this bshell-manager)) default-directory)
 
-(defmethod buffer-manage-read-working-directory ((this bshell-manager))
+(cl-defmethod buffer-manage-read-working-directory ((this bshell-manager))
   "Read an entry name by prompting the user by the entry's working directory."
   (cl-flet ((entry-wd
 	     (entry)
@@ -92,10 +92,10 @@
     (let ((completion-ignore-case t))
       (buffer-manager-read-name this "Switch by dir" t nil 'entry-wd))))
 
-(defmethod buffer-manager-interactive-functions ((this bshell-manager)
-						 singleton-variable-sym)
+(cl-defmethod buffer-manager-interactive-functions ((this bshell-manager)
+						    singleton-variable-sym)
   (append
-   (call-next-method this singleton-variable-sym)
+   (cl-call-next-method this singleton-variable-sym)
    `(("jump-directory"
       (defun ,(intern (format "%s-jump-directory"
 			      (buffer-manager-conical-name this)))
@@ -115,8 +115,8 @@
 	(let* ((this ,singleton-variable-sym)
 	       (entry (buffer-manager-switch this (or name 'cycle))))))))))
 
-(defmethod buffer-manager-key-bindings ((this bshell-manager))
-  (append (call-next-method this)
+(cl-defmethod buffer-manager-key-bindings ((this bshell-manager))
+  (append (cl-call-next-method this)
 	  '(("jump-directory" shell-mode-map "C-c g")
 	    ("rename" shell-mode-map "C-c r"))))
 
