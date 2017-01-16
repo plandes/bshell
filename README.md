@@ -53,7 +53,7 @@ While *in* a shell buffer the following key bindings apply:
 |`C-x C-h`             |bshell-switch *                    |Switch to shell NAME, which is prompted from the user.
 |`C-c C-t`             |bshell-rename                      |Rename the buffer entry shells.
 |`C-c C-g`             |bshell-jump-directory              |Jump to a bookmark in the current buffer.
-|`C-c C-q`             |bshell-switch-by-working-directory |Jump to a bookmark in the current buffer.
+|`C-c C-q`             |bshell-switch-by-working-directory |Switch to an entry prompting by working directory.
 |`C-x C-'`             |bshell-toggle-cycle-method         |Toggle cycle methods (i.e. last visited vs. next buffer).
 
 \* **Note:** `C-x C-h` invokes `bshell-switch`, which creates a new shell when
