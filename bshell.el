@@ -1,4 +1,4 @@
-;;; bshell.el --- interactive object oriented shell
+;;; bshell.el --- manage and track multiple inferior shells
 
 ;; Copyright (C) 2015 - 2017 Paul Landes
 
@@ -29,15 +29,25 @@
 ;;; Commentary:
 
 ;; This package allows an Emacs user to create, delete, rename and fast swtich
-;; between multiple inferior shells using
-;; the [buffer-manager](https://github.com/plandes/buffer-manage) library.  This
-;; is done by extending the `buffer-manage` and using its functions and
-;; keybindings to manage multiple inferior shells.  To summarize, this includes:
+;; between multiple inferior shells using the buffer-manager library.  This is
+;; done by extending the `buffer-manage` and using its functions and
+;; keybindings to manage multiple inferior shells.  To summarize, this
+;; includes:
 ;; * A major mode for switching to, deleting and starting new shells.
-;; * Fast switching with customized key bindings through the customize framework.
+;; * Fast switching with customized key bindings through the customize
+;;   framework.
 ;; * Track and rename shells by name through the shell entry management mode.
 ;; * Interact with buffer shell (entries) as objects with a straight forward
 ;;   API.
+
+;;; Usage:
+
+;; You can start a new shell with `C-x C-h`.  Do this again to get another
+;; shell that lives as a *separate* process in a buffer.  Use `C-tab` to get a
+;; list of shells in the *Entries* buffer where you can rename, delete, switch
+;; or add new shells.  To "fast" switch use `C-x C-h`, which changes the
+;; current window's shell to the last used or next shell based on the current
+;; cycling method.
 
 ;;; Code:
 
@@ -51,13 +61,7 @@
 (defclass bshell-entry (buffer-entry) ())
 
 (cl-defmethod buffer-entry-create-buffer ((this bshell-entry))
-  (let ((process-environment (cl-copy-list process-environment)))
-    ;; since mac login scripts build PATH and MANPATH from environment let the
-    ;; this new shell rebuild these
-    (when (memq system-type '(darwin))
-      (setenv "PATH" "")
-      (setenv "MANPATH" ""))
-    (shell)))
+  (shell))
 
 (cl-defmethod buffer-manage-entry-jump-directory ((this bshell-entry) bookmark)
   "Jump to directory to the directory given from BOOKMARK."
@@ -83,14 +87,12 @@
 (cl-defmethod buffer-manage-read-working-directory ((this bshell-manager))
   "Read an entry name by prompting the user by the entry's working directory."
   (cl-flet ((entry-wd
-	     (entry)
-	     (with-current-buffer (buffer-entry-buffer entry)
-	       (let ((s default-directory))
-		 (if (not (equal "~/" s))
-		     (setq s (replace-regexp-in-string "^~/" "" s)))
-		 (format "%s (%s)" s (buffer-entry-name entry))))))
+	      (entry)
+	      (with-current-buffer (buffer-entry-buffer entry)
+		(let ((dir (abbreviate-file-name default-directory)))
+		  (format "%s (%s)" dir (buffer-entry-name entry))))))
     (let ((completion-ignore-case t))
-      (buffer-manager-read-name this "Switch by dir" t nil 'entry-wd))))
+      (buffer-manager-read-name this "Switch by dir" t nil #'entry-wd))))
 
 (cl-defmethod buffer-manager-interactive-functions ((this bshell-manager)
 						    singleton-variable-sym)
@@ -117,12 +119,13 @@
 
 (cl-defmethod buffer-manager-key-bindings ((this bshell-manager))
   (append (cl-call-next-method this)
-	  '(("jump-directory" shell-mode-map "C-c g")
-	    ("rename" shell-mode-map "C-c r"))))
+	  '(("jump-directory" shell-mode-map "C-c C-g")
+	    ("rename" shell-mode-map "C-c C-t")
+	    ("switch-by-working-directory" shell-mode-map "C-c C-q"))))
 
 (defgroup bshell nil
   "Interactive Object Oriented Shell"
-  :group 'bshell
+  :group 'buffer-manage
   :prefix "bshell-")
 
 (defcustom bshell-manager-singleton

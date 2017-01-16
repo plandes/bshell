@@ -28,20 +28,37 @@ In your `~/.emacs` start up file include:
 (require 'bshell)
 ```
 
+You can start a new shell with `C-x C-h`.  Do this again to get another shell
+that lives as a *separate* process in a buffer.  Use `C-tab` to get a list of
+shells in the *Entries* buffer where you can rename, delete, switch or add new
+shells.  To "fast" switch use `C-x C-h`, which changes the current window's
+shell to the last used or next shell based on
+the [current cycling](https://github.com/plandes/buffer-manage#fast-switching)
+method.  See the [shell key bindings](#key-bindings)
+and
+[buffer manage key bindings](https://github.com/plandes/buffer-manage#key-bindings) for
+all key bindigns.
+
+
 ### Key Bindings
 
 Use `C-tab` to enter the shell entry management mode (see
 [buffer-manage entries mode](https://github.com/plandes/buffer-manage#key-bindings)).
 While *in* a shell buffer the following key bindings apply:
 
-|Key               |Function                        |Description
-|-----------------:|--------------------------------|-----------------------------------------------------------
-|`<C-tab>`         |bshell-list                     |In this buffer, you can rename and go to shells.
-|`<C-M-tab>`       |bshell-new                      |Create a new shell entry.
-|`C-x C-h`         |bshell-switch                   |Switch to shell NAME, which is prompted from the user.
-|`C-c r`           |bshell-rename                   |Rename the buffer entry shells.
-|`C-c g`           |bshell-jump-directory           |Jump to a bookmark in the current buffer.
-|`C-x C-'`         |bshell-toggle-cycle-method      |Toggle cycle methods (i.e. last visited vs. next buffer).
+|Key                   |Function                           |Description
+|---------------------:|-----------------------------------|-----------------------------------------------------------
+|`<C-tab>`             |bshell-list                        |In this buffer, you can rename and go to shells.
+|`<C-M-tab>`           |bshell-new                         |Create a new shell entry.
+|`C-x C-h`             |bshell-switch *                    |Switch to shell NAME, which is prompted from the user.
+|`C-c C-t`             |bshell-rename                      |Rename the buffer entry shells.
+|`C-c C-g`             |bshell-jump-directory              |Jump to a bookmark in the current buffer.
+|`C-c C-q`             |bshell-switch-by-working-directory |Jump to a bookmark in the current buffer.
+|`C-x C-'`             |bshell-toggle-cycle-method         |Toggle cycle methods (i.e. last visited vs. next buffer).
+
+\* **Note:** `C-x C-h` invokes `bshell-switch`, which creates a new shell when
+none already exist.  It does nothing when there is only one shell and fast
+swtiches when there are more than one.
 
 
 ## License
