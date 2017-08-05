@@ -63,9 +63,6 @@
 (cl-defmethod buffer-entry-create-buffer ((this bshell-entry))
   (shell))
 
-;; (cl-defmethod config-manager-new-entry ((this bshell-entry) &rest args)
-;;   (shell))
-
 (cl-defmethod buffer-manage-entry-jump-directory ((this bshell-entry) bookmark)
   "Jump to directory to the directory given from BOOKMARK."
   (require 'bookmark)
@@ -76,31 +73,25 @@
 		(file-name-directory file))))
     (buffer-entry-insert this (format "cd %s" dir) t)))
 
-(defclass bshell-manager (buffer-manager) ())
 
-;(cl-defmethod config-manager-entry-default-name ((this bshell-manager)) "bshell")
+(defclass bshell-manager (buffer-manager)
+  ())
 
-(cl-defmethod config-manager-entry-default-name ((this bshell-manager)) "bshell")
+(cl-defmethod config-manager-entry-default-name ((this bshell-manager))
+  "bshell")
 
-;(cl-defmethod config-manager-name ((this bshell-manager)) "shell")
-
-;; (cl-defmethod buffer-manager-create-entry ((this bshell-manager) &rest args)
-;;   (apply 'bshell-entry nil args))
-
-(cl-defmethod config-manager-new-entry ((this bshell-manager) &rest args)
-  (apply #'bshell-entry args))
-
-;(apply #'bshell-entry a)
+(cl-defmethod config-manager-new-entry ((this bshell-manager) &optional slots)
+  (apply #'bshell-entry slots))
 
 (cl-defmethod buffer-manager-start-dir ((this bshell-manager)) default-directory)
 
 (cl-defmethod buffer-manage-read-working-directory ((this bshell-manager))
   "Read an entry name by prompting the user by the entry's working directory."
   (cl-flet ((entry-wd
-	      (entry)
-	      (with-current-buffer (buffer-entry-buffer entry)
-		(let ((dir (abbreviate-file-name default-directory)))
-		  (format "%s (%s)" dir (buffer-entry-name entry))))))
+	     (entry)
+	     (with-current-buffer (buffer-entry-buffer entry)
+	       (let ((dir (abbreviate-file-name default-directory)))
+		 (format "%s (%s)" dir (buffer-entry-name entry))))))
     (let ((completion-ignore-case t))
       (buffer-manager-read-name this "Switch by dir" t nil #'entry-wd))))
 
@@ -133,9 +124,6 @@
 	    ("rename" shell-mode-map "C-c C-t")
 	    ("switch-by-working-directory" shell-mode-map "C-c C-q"))))
 
-;; (cl-defmethod initialize-instance ((this bshell-manager) &rest rest)
-;;   (oset this :name "bshell-NO")
-;;   (apply #'cl-call-next-method this rest))
 
 (defgroup bshell nil
   "Interactive Object Oriented Shell"
@@ -153,7 +141,7 @@
 (buffer-manager-create-interactive-functions
  bshell-manager-singleton 'bshell-manager-singleton)
 
-(buffer-manager-bind-functions 'bshell-manager-singleton)
+;(buffer-manager-bind-functions 'bshell-manager-singleton)
 
 (provide 'bshell)
 
