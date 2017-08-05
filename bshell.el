@@ -2,12 +2,12 @@
 
 ;; Copyright (C) 2015 - 2017 Paul Landes
 
-;; Version: 0.1
+;; Version: 0.2
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: interactive shell management
 ;; URL: https://github.com/plandes/bshell
-;; Package-Requires: ((emacs "25") (buffer-manage "0.1"))
+;; Package-Requires: ((emacs "25") (buffer-manage "0.2"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -106,7 +106,7 @@
 	"Jump to a bookmark in the current buffer."
 	(interactive (list (bookmark-completing-read "Jump to directory")))
 	(let* ((this ,singleton-variable-sym)
-	       (entry (buffer-manager-current-instance this)))
+	       (entry (config-manager-current-instance this)))
 	  (if entry (buffer-manage-entry-jump-directory entry bookmark)))))
      ("switch-by-working-directory"
       (defun ,(intern (format "%s-switch-by-working-directory"
@@ -130,7 +130,6 @@
   :group 'buffer-manage
   :prefix "bshell-")
 
-;(makunbound 'bshell-manager-singleton)
 (defcustom bshell-manager-singleton
   (bshell-manager "singleton")
   "The singleton bshell manager."
@@ -140,8 +139,6 @@
 ;; creates interactive function `bshell-new' etc
 (buffer-manager-create-interactive-functions
  bshell-manager-singleton 'bshell-manager-singleton)
-
-;(buffer-manager-bind-functions 'bshell-manager-singleton)
 
 (provide 'bshell)
 
