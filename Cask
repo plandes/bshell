@@ -3,8 +3,8 @@
 (source melpa)
 
 (depends-on "buffer-manage"
-	     :git "https://github.com/plandes/buffer-manage"
-	     :files ("*.el"))
+	    :git "https://github.com/plandes/buffer-manage"
+	    :files ("*.el"))
 
 (package-file "bshell.el")
 
