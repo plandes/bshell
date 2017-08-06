@@ -91,7 +91,7 @@
 	     (entry)
 	     (with-current-buffer (buffer-entry-buffer entry)
 	       (let ((dir (abbreviate-file-name default-directory)))
-		 (format "%s (%s)" dir (buffer-entry-name entry))))))
+		 (format "%s (%s)" dir (config-entry-name entry))))))
     (let ((completion-ignore-case t))
       (buffer-manager-read-name this "Switch by dir" t nil #'entry-wd))))
 
