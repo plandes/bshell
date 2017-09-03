@@ -2,9 +2,7 @@
 (source gnu)
 (source melpa)
 
-(depends-on "buffer-manage"
-	    :git "https://github.com/plandes/buffer-manage"
-	    :files ("*.el"))
+(depends-on "buffer-manage" "0.5")
 
 (package-file "bshell.el")
 

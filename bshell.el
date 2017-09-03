@@ -7,7 +7,7 @@
 ;; Maintainer: Paul Landes
 ;; Keywords: interactive shell management
 ;; URL: https://github.com/plandes/bshell
-;; Package-Requires: ((emacs "25") (buffer-manage "0.3"))
+;; Package-Requires: ((emacs "25") (buffer-manage "0.5"))
 
 ;; This file is not part of GNU Emacs.
 
