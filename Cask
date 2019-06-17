@@ -2,7 +2,7 @@
 (source gnu)
 (source melpa)
 
-(depends-on "buffer-manage" "0.5")
+(depends-on "buffer-manage" "0.9")
 
 (package-file "bshell.el")
 
