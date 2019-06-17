@@ -75,7 +75,8 @@
 
 
 (defclass bshell-manager (buffer-manager)
-  ())
+  ()
+  :method-invocation-order :c3)
 
 (cl-defmethod config-manager-entry-default-name ((this bshell-manager))
   "bshell")
@@ -131,7 +132,7 @@
   :prefix "bshell-")
 
 (defcustom bshell-manager-singleton
-  (bshell-manager "singleton")
+  (bshell-manager "shell")
   "The singleton bshell manager."
   :group 'bshell
   :type 'object)
