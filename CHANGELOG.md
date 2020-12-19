@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+## [0.5] - 2020-12-18
 ### Changed
 - Upgraded to [zenbuild]
 - Compat with recent *flycheck* and `package-lint`.
@@ -22,7 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.4] - 2020-12-18
-
 ### Changed
 - Upgrade to [buffer-manage] v0.9.
 
@@ -44,7 +44,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 First major release.
 
 
-[Unreleased]: https://github.com/plandes/buffer-manage/compare/v0.4...HEAD
+[Unreleased]: https://github.com/plandes/buffer-manage/compare/v0.5...HEAD
+[0.5]: https://github.com/plandes/buffer-manage/compare/v0.4...v0.5
 [0.4]: https://github.com/plandes/buffer-manage/compare/v0.3...v0.4
 [0.3]: https://github.com/plandes/buffer-manage/compare/v0.2...v0.3
 [0.2]: https://github.com/plandes/buffer-manage/compare/v0.1...v0.2
