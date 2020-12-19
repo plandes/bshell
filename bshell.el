@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2015 - 2020 Paul Landes
 
-;; Version: 0.5
+;; Version: 0.10
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: unix interactive shell management
