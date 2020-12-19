@@ -2,7 +2,7 @@
 
 [![MELPA badge][melpa-badge]][melpa-link]
 [![MELPA stable badge][melpa-stable-badge]][melpa-stable-link]
-[![Travis CI Build Status][travis-badge]][travis-link]
+[![Build Status][build-badge]][build-link]
 
 This package allows an Emacs user to create, delete, rename and fast swtich
 between multiple inferior shells using the [buffer-manager] library.  This is
@@ -58,7 +58,7 @@ An extensive changelog is available [here](CHANGELOG.md).
 
 ## License
 
-Copyright © 2017 Paul Landes
+Copyright © 2020 Paul Landes
 
 GNU Lesser General Public License, Version 2.0
 
@@ -73,5 +73,5 @@ GNU Lesser General Public License, Version 2.0
 [melpa-stable-link]: https://stable.melpa.org/#/bshell
 [melpa-badge]: https://melpa.org/packages/bshell-badge.svg
 [melpa-stable-badge]: https://stable.melpa.org/packages/bshell-badge.svg
-[travis-link]: https://travis-ci.org/plandes/bshell
-[travis-badge]: https://travis-ci.org/plandes/bshell.svg?branch=master
+[build-badge]: https://github.com/plandes/bshell/workflows/CI/badge.svg
+[build-link]: https://github.com/plandes/bshell/actions
