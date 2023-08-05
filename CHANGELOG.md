@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
-## [0.11] - 2023-08-05
+## [1.0] - 2023-08-05
 ### Changed
 - Switch to melpa stable
 - CI fixes.
@@ -30,7 +30,7 @@ tag `0.6` could break MELPA inequality checks.
 - Script compiler now allows no arguments.
 - Version bump.
 - Switched from Travis GitHub CI actions.
-- Upgrade to [buffer-manage] v0.11.
+- Upgrade to [buffer-manage] v1.0.
 
 ### Added
 - Class and method level documentation.
@@ -58,8 +58,8 @@ tag `0.6` could break MELPA inequality checks.
 First major release.
 
 
-[Unreleased]: https://github.com/plandes/buffer-manage/compare/v0.11...HEAD
-[0.11]: https://github.com/plandes/buffer-manage/compare/v0.10...v0.11
+[Unreleased]: https://github.com/plandes/buffer-manage/compare/v1.0...HEAD
+[1.0]: https://github.com/plandes/buffer-manage/compare/v0.10...v1.0
 [0.10]: https://github.com/plandes/buffer-manage/compare/v0.5...v0.10
 [0.5]: https://github.com/plandes/buffer-manage/compare/v0.4...v0.5
 [0.4]: https://github.com/plandes/buffer-manage/compare/v0.3...v0.4
