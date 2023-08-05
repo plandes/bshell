@@ -1,13 +1,13 @@
 ;;; bshell.el --- Manage and track multiple inferior shells  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015 - 2020 Paul Landes
+;; Copyright (C) 2015 - 2023 Paul Landes
 
-;; Version: 0.10
+;; Version: 0.11
 ;; Author: Paul Landes
 ;; Maintainer: Paul Landes
 ;; Keywords: unix interactive shell management
 ;; URL: https://github.com/plandes/bshell
-;; Package-Requires: ((emacs "26") (buffer-manage "0.11"))
+;; Package-Requires: ((emacs "26") (buffer-manage "1.1"))
 
 ;; This file is not part of GNU Emacs.
 
