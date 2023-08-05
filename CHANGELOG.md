@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+## [0.11] - 2023-08-05
+### Changed
+- Switch to melpa stable
+- CI fixes.
+
+
 ## [0.10] - 2020-12-18
 Warp forward to tag `0.10` as tag `0.9` was previously added by mistake.  Using
 tag `0.6` could break MELPA inequality checks.
@@ -52,7 +58,8 @@ tag `0.6` could break MELPA inequality checks.
 First major release.
 
 
-[Unreleased]: https://github.com/plandes/buffer-manage/compare/v0.10...HEAD
+[Unreleased]: https://github.com/plandes/buffer-manage/compare/v0.11...HEAD
+[0.11]: https://github.com/plandes/buffer-manage/compare/v0.10...v0.11
 [0.10]: https://github.com/plandes/buffer-manage/compare/v0.5...v0.10
 [0.5]: https://github.com/plandes/buffer-manage/compare/v0.4...v0.5
 [0.4]: https://github.com/plandes/buffer-manage/compare/v0.3...v0.4
