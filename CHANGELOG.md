@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
+## [1.1.0] - 2026-01-07
+### Changes
+- Switch to major, minor, and debug version format.
+- Rename manager singleton instance to `bshell` to accurately reflect the
+  library name when `buffer-manager-bind-functions` is invoked.
+
+
 ## [1.0] - 2023-08-05
 ### Changed
 - Switch to melpa stable
@@ -58,7 +65,8 @@ tag `0.6` could break MELPA inequality checks.
 First major release.
 
 
-[Unreleased]: https://github.com/plandes/buffer-manage/compare/v1.0...HEAD
+[Unreleased]: https://github.com/plandes/buffer-manage/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/plandes/buffer-manage/compare/v1.0...v1.1.0
 [1.0]: https://github.com/plandes/buffer-manage/compare/v0.10...v1.0
 [0.10]: https://github.com/plandes/buffer-manage/compare/v0.5...v0.10
 [0.5]: https://github.com/plandes/buffer-manage/compare/v0.4...v0.5

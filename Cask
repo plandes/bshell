@@ -2,7 +2,7 @@
 (source gnu)
 (source melpa-stable)
 
-(depends-on "dash" "2.17.0")
+(depends-on "dash" "2.19.1")
 (depends-on "buffer-manage" "1.1")
 
 (package-file "bshell.el")
